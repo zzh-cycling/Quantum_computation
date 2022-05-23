@@ -59,7 +59,8 @@ $$ H=H_{field}+H_{atom}+H_{int} $$
 
 1. Rabi oscillation [Rabi_oscillation_two_level with qutip](./Rabi_oscillation_two_level_qutip.py), [Rabi_oscillation_three_level with qutip](./Rabi_oscillation_three_level_qutip.py), [Rabi_without_qutip](./Rabi_without_qutip.py)
 
-先考虑两能级系统动力学，其哈密顿量为：
+先考虑两能级系统动力学，其哈密顿量为:
+
 $$
 H=H_{free-atom}+H_{free-field}+H_{atom-classical\_field\_interaction}
 \\=-\frac{\omega_0}{2}\sigma_z+\frac{\omega_1}{2}\begin{pmatrix}
@@ -71,14 +72,17 @@ e^{i\omega t } & 0
 \omega_1 e^{i\omega t } & \omega_0
 \end{pmatrix} 
 $$
-The Rabi model is a semi-classical model. This means that we use a classical representation of the field. 
+
+The Rabi model is a semi-classical model. This means that we use a classical representation of the field.
+
 $$
 E(t)=E_x(t)=E_0 cos(\omega t)
 \\H_{atom-classical\_field\_interaction}=\bm{\hat{d}}·\bm{E}(t)=-\hat{d}E_0cos(\omega t)
 $$
+
 Because we do not use a quantum field, there is no free-field Hamiltonian. The physical pictures of Rabi oscillation are like below(absorption of photon and emitted radiation):
 ![](https://www.edwinvanderpol.com/vacuum_rabi_splitting/images/content/absorption.gif)
-![](https://www.edwinvanderpol.com/vacuum_rabi_splitting/images/content/emission.gif)
+![](https://www.edwinvanderpol.com/vacuum_rabi_splitting/images/content/emission.gif) 
 或者用基矢来写就是($\hbar=1$)：
 
 $$
@@ -100,6 +104,7 @@ $$
 \omega_1 & \Delta
 \end{pmatrix}
 $$
+
 其本征值为：
 $E_g=-\frac{1}{2}\sqrt{\Delta^2+\omega_1^2}, E_e=\frac{1}{2}\sqrt{\Delta^2+\omega_1^2}$
 其布居数随时间演化如下：
@@ -110,13 +115,16 @@ $E_g=-\frac{1}{2}\sqrt{\Delta^2+\omega_1^2}, E_e=\frac{1}{2}\sqrt{\Delta^2+\omeg
 现在我们来考虑三能级系统，相比二能级系统，三能级系统在与多模光场相互作用时，会展现出更多丰富的现象。例如 Hanle 效应 [1]、相干布居囚禁[2](CPT,coherent population 、电磁诱导透明 [3]、无反转激光 [4] 等等。这里介绍 $\Lambda$ 型三能级系统中下文‘Adiabatic evolution wtih qutip and without qutip just primary code.’所说的利用(STIRAP)进行绝热的布居迁移 [5]。
 
 ab能级之间有偶极矩μ1，ac能级之间有偶极矩μ2，而bc能级之间的偶极跃迁是禁戒的。外加两束频率分别为ν1和ν2的驱动光场，满足
+
 $$
 ω_a−ω_b=ν_1+Δ,ω_a−ω_c=ν_2+Δ
 $$
+
 即具有相同的失谐。而ν1,ν2之间频率相差较大，亦或有着不同的偏振，互相之间不会干扰。加两束激光有一个理由就是通常实验室没有足够高频率的激光可以一次性上两个能级。
 ![](https://pic3.zhimg.com/80/v2-cee2ab3b9c5607de3fe1137539a1de96_1440w.jpg)
 
 此时我们不考虑失谐，则此三能级系统的哈密顿量为：
+
 $$
 H=\frac{1}{2}[\Omega_r(|e><g|+|g><e|)\\+\Omega_b(|e><r|+|r><e|)]
 \\=\frac{1}{2} \begin{pmatrix}
@@ -136,9 +144,11 @@ This part especially focus on stimulation on three-level system interacting with
 我们在上文已经论述过了所谓绝热演化，即缓慢调整外参量使得系统哈密顿量变化，进而使系统基态变化。
 
 我们先来考虑一个toy model.还是用上文的Landau-Zener model：
+
 $$
 H=\epsilon \sigma_x+\delta (t)\sigma_z
 $$
+
 当我们的$\delta(t)$随时间变化时，系统的基态也随时改变，设最开始出于|0>态,那么我们有什么方法让他变到|1>态呢？（自己思考一下，很简单的。）
 那就是：最开始$\delta(t)=-1$，最后$\delta(t)=1$，这样对应的基态就分别是|0>态和|1>态，方便起见我们不如取$\delta(t)=-1+\frac{2t}{T}$,最后如下图所示。
 ![](./simple_adiabatic_evolution.png)
@@ -166,13 +176,17 @@ $\sigma_z$作用在|+>态上，改变大小，衰减。
 ![](./sigmaz_on_plusstates.png)
 
 在计算的时候发现$Trρ^2$到最后一直大于$\frac{1}{2}$, 推导了一下：
+
 $$
 Trρ^2_{mix} =\sum_n \langle n | \sum_i \sum_j p_ip_j|ψ_i \rangle \langle ψ_i| ψ_j \rangle \langle ψ_j| n \rangle \\
 = \sum_i \sum_j p_ip_j \langle ψ_i| ψ_j \rangle \langle ψ_j| \sum_n |n \rangle \langle n| ψ_i \rangle \\
-=\sum_i \sum_j p_ip_j | \langle ψ_i|ψ_j \rangle|^2 =\sum_i p^2_i <\sum_i p_i = 1 . 
+=\sum_i \sum_j p_ip_j | \langle ψ_i|ψ_j \rangle|^2 =\sum_i p^2_i <\sum_i p_i = 1 
+
 $$
 
- For a maximally mixed state，which means that its decomposition distribution of states is uniform probability distribution( $\rho =\lambda_i |\lambda_i><\lambda_i|, \lambda_i=\frac{1}{n}$), we have for a given dimension d of the system
+
+For a maximally mixed state，which means that its decomposition distribution of states is uniform probability distribution( $\rho =\lambda_i |\lambda_i><\lambda_i|, \lambda_i=\frac{1}{n}$), we have for a given dimension d of the system
+
 $$
 Trρ^2_{mix} =\frac{1}{d} > 0 . 
 $$
