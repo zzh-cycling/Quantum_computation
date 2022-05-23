@@ -1,29 +1,3 @@
-import numpy as np
-import scipy.optimize as so
-from random import random
-
-so.minimize(fun, x0, args=(), method='Nelder-Mead', bounds=None, tol=None, callback=None, options={'func': None, 'maxiter': None, 'maxfev': None, 'disp': False, 'return_all': False, 'initial_simplex': None, 'xatol': 0.0001, 'fatol': 0.0001, 'adaptive': False})
-
-omiga_0=2
-n_c=4
-Omiga_t=0
-T=10
-t=np.linspace(0,T,100)
-
-def fun(x=[])
-for i in range(n_c):
-    r_k=random()
-    omiga_k=2*np.pi*(i+r_k)
-    Omiga_t += omiga_0 *(+A_k*np.cos(omiga_k*t)+B_k*np.sin(omiga_k*t))
-
-#可以手解四个偏微分方程，\rho\dagger=\rho, Tr(\rho)=1 五个条件，
- #\partial \rho=\gamma [sigma_-*\rho*sigma_+-1/2*(sigma_+*sigma_-*\rho+\rho*sigma_+*sigma_-)]
-
-# CRAB such as Nelder-meal BFGS  algorithm GRAPE 梯度下降算法 deep learning 里的正向传播
-#有些东西自己来写不调包，能够发现，算出更多的东西，但是Nelder-meal很古老哩。
-#H=Delta(t)*sigmaz()+0.1sigmax()
-
-#那么调用mesolve函数时，[expect]参数需要设置为空，否则出错。如果需要获得算符的期望值，那么可以调用expect函数，输入参数为算符和量子态。
 import qutip as qt
 import numpy as np
 import matplotlib.pyplot as plt
