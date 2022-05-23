@@ -1,3 +1,5 @@
+本文食用方法：下载到本地用对markdown 和latex支持很好地编辑器打开看，代码环境配置好了都能跑通，但是不保证与物理实际对应的上。踩坑部分见这里：https://zzh-cycling.github.io/2022/05/04/qutip%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/
+
 # Quantum computation and Quantum control
 This is the notes and code for optimization of control of qubit in quantum computer.
 
@@ -264,7 +266,7 @@ H=[\frac{\Omega}{2}(|r>_1<g|+|g>_1<r|)-\Delta |r>_1<r|]\otimes I_2\\+I_1 \otimes
 $$
 
 ![](images/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E7%AC%94%E8%AE%B0-11.jpg)
-
+com
 画图结果如下：第一张是第二张第六子图放大版，我们可以看到:
 $V=24$时，gg态能出现，rr态几乎不出现，rg,gr出现，呈psi态叠加态，使得单独原子的激发态能级升上去,并且周期缩短到原来的$\frac{1}{\sqrt{2}}$倍数，$\Omega_{|w>}$变成等效的 $\sqrt{N}\Omega$
 
@@ -277,9 +279,13 @@ $V=24$时，gg态能出现，rr态几乎不出现，rg,gr出现，呈psi态叠�
 ## Reference
 
 [1] Marlan O. Scully and M. Suhail Zubairy. Quantum optics. Cambridge University Press, 1997.
+
 [2] E. Arimondo. Coherent population trapping in laser spectroscopy. In Wolf, E, editor, Progress in Optics, volume 35, pages 257–354. Elsevier, Amsterdam, 1996.
+
 [3] Michael Fleischhauer, Atac Imamoglu, and Jonathan P. Marangos. Electromagnetically induced transparency: Optics in coherent media. Reviews of modern physics, 77(2):633, 2005.
+
 [4] Marlan O. Scully, Shi-Yao Zhu, and Athanasios Gavrielides. Degenerate quantum-beat laser: Lasing without inversion and inversion without lasing. Phys. Rev. Lett., 62(24):2813–2816, June 1989.
+
 [5] J. R. Kuklinski, U. Gaubatz, F. T. Hioe, and K. Bergmann. Adiabatic population transfer in a three-level system driven by delayed laser pulses. Phys. Rev. A, 40(11):6741–6744, December 1989.
 
 本文大量引用蔡老师的文章（（（，毕竟我从16年就开始关注“浅斟低唱”嘞。具体文献下述文章也都提到过。
