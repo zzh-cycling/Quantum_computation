@@ -62,7 +62,8 @@ $$ H=H_{field}+H_{atom}+H_{int} $$
 先考虑两能级系统动力学，其哈密顿量为:
 
 $$
-H=H_{free-atom}+H_{free-field}+H_{atom-classical\_field\_interaction}
+H=H_{free-atom}+H_{free-field}+H_{atom-classical-field-interaction}
+
 \\=-\frac{\omega_0}{2}\sigma_z+\frac{\omega_1}{2}\begin{pmatrix}
 0 & e^{i\omega t} \\
 e^{i\omega t } & 0
@@ -110,7 +111,7 @@ $E_g=-\frac{1}{2}\sqrt{\Delta^2+\omega_1^2}, E_e=\frac{1}{2}\sqrt{\Delta^2+\omeg
 其布居数随时间演化如下：
 ![](https://www.edwinvanderpol.com/vacuum_rabi_splitting/images/content/rabi/rabimodel.gif)
 
-![](./two_level_rabi.png)
+![](./images/two_level_rabi.png)
 
 现在我们来考虑三能级系统，相比二能级系统，三能级系统在与多模光场相互作用时，会展现出更多丰富的现象。例如 Hanle 效应 [1]、相干布居囚禁[2](CPT,coherent population 、电磁诱导透明 [3]、无反转激光 [4] 等等。这里介绍 $\Lambda$ 型三能级系统中下文‘Adiabatic evolution wtih qutip and without qutip just primary code.’所说的利用(STIRAP)进行绝热的布居迁移 [5]。
 
@@ -135,7 +136,7 @@ H=\frac{1}{2}[\Omega_r(|e><g|+|g><e|)\\+\Omega_b(|e><r|+|r><e|)]
 $$
 
 对应下图（a）
-![](./STIRAP.png)
+![](./images/STIRAP.png)
 
 2. Adiabatic evolution wtih qutip and without qutip just primary code. 可参见：[adiabatic_evolution_primarycode](./adiabatic_evolution_primarycode.py)(画出图一的代码),[adiabatic_evolution_withqutip](./adiabatic_evolution_withqutip.py)（画出图二的代码）
 
@@ -151,15 +152,15 @@ $$
 
 当我们的$\delta(t)$随时间变化时，系统的基态也随时改变，设最开始出于|0>态,那么我们有什么方法让他变到|1>态呢？（自己思考一下，很简单的。）
 那就是：最开始$\delta(t)=-1$，最后$\delta(t)=1$，这样对应的基态就分别是|0>态和|1>态，方便起见我们不如取$\delta(t)=-1+\frac{2t}{T}$,最后如下图所示。
-![](./simple_adiabatic_evolution.png)
+![](./images/simple_adiabatic_evolution.png)
 其本征能量如图所示，其代码如[eigenenergy_calculation](./eigenenergy_calculation.py)所示，和[Rabi_without_qutip](./Rabi_without_qutip.py)如出一辙：
-![](./eigenenergy.png)
+![](./images/eigenenergy.png)
 看起来很像狄拉克锥吧，嗯？
 其能级差最小值为：$\Delta E=2\epsilon$.
 
 然后我们再来考虑上文所说的三能级系统的布局迁移，从子图1我们可以看到，|g>态很好地转移到了|r>态上，基本没有在|e>态上稍作停留，当我们加入较强的耗散项后，便将很大部分的|g>态转移到了|e>态。
 
-![](./STIRAP%20Population%20Evolution%20with%20and%20without%20dissipation.png)
+![](./images/STIRAP%20Population%20Evolution%20with%20and%20without%20dissipation.png)
 3. Dissipative items and its evolutioning states ploted on Bloch Sphere. [布洛赫球演化](./state_evolution_onBlochSphere.py)
 
 这一部分主要是考虑两个初态，即|1> state and |+> state，在H=0的条件下，纯耗散项$\sigma_-, \sigma_z$的作用下在布洛赫球上的演化.
@@ -168,12 +169,12 @@ $$
 可以手解四个偏微分方程，$\rho\dagger=\rho, Tr(\rho)=1 $,五个条件，
 $ \frac{\partial \rho}{\partial t}=\gamma [\sigma_-\rho\sigma_+-\frac{1}{2}(\sigma_+\sigma_-\rho+\rho\sigma_+\sigma_-)]
 $
-![](./%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E7%AC%94%E8%AE%B0-6.jpg)
+![](./images/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E7%AC%94%E8%AE%B0-6.jpg)
 最后结果如下：
 $\sigma_-$作用在|+>态上，改变相位，翻转。
-![](./sigma-_on_plusstate.png)
+![](./images/sigma-_on_plusstate.png)
 $\sigma_z$作用在|+>态上，改变大小，衰减。
-![](./sigmaz_on_plusstates.png)
+![](./images/sigmaz_on_plusstates.png)
 
 在计算的时候发现$Trρ^2$到最后一直大于$\frac{1}{2}$, 推导了一下：
 
@@ -181,7 +182,6 @@ $$
 Trρ^2_{mix} =\sum_n \langle n | \sum_i \sum_j p_ip_j|ψ_i \rangle \langle ψ_i| ψ_j \rangle \langle ψ_j| n \rangle \\
 = \sum_i \sum_j p_ip_j \langle ψ_i| ψ_j \rangle \langle ψ_j| \sum_n |n \rangle \langle n| ψ_i \rangle \\
 =\sum_i \sum_j p_ip_j | \langle ψ_i|ψ_j \rangle|^2 =\sum_i p^2_i <\sum_i p_i = 1 
-
 $$
 
 
@@ -231,7 +231,7 @@ so.minimize(fun, x0, args=(), method='Nelder-Mead', \n
 bounds=None, tol=None, callback=None\n 
 options={'func': None, 'maxiter': None, 'maxfev': None, 'disp': False, 'return_all': False, 'initial_simplex': None, 'xatol': 0.0001, 'fatol': 0.0001, 'adaptive': False})
 ```
-然后有些东西可以自己来写不调包，能够发现很多隐藏的东西，算出更多的东西，但是Nelder-meal很古老哩。所以没必要自己写。
+然后有些东西可以自己来写不调包，能够发现很多隐藏的东西，算出更多的东西，但是Nelder-mead很古老哩。所以没必要自己写。
 
 
 5. Two-body physics
@@ -242,13 +242,13 @@ H=H_1\otimes I_2+I_1 \otimes H_2+H_{12} \\
 H=[\frac{\Omega}{2}(|r>_1<g|+|g>_1<r|)-\Delta |r>_1<r|]\otimes I_2\\+I_1 \otimes [\frac{\Omega}{2}(|r>_2<g|+|g>_2<r|)-\Delta |r>_2<r|]\\+V|r>_1<r| \otimes |r>_2<r|
 $$
 
-![](./%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E7%AC%94%E8%AE%B0-11.jpg)
+![](./images/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E7%AC%94%E8%AE%B0-11.jpg)
 
 画图结果如下：第一张是第二张第六子图放大版，我们可以看到:
 $V=24$时，gg态能出现，rr态几乎不出现，rg,gr出现，呈psi态叠加态，使得单独原子的激发态能级升上去,并且周期缩短到原来的$\frac{1}{\sqrt{2}}$倍数，$\Omega_{|w>}$变成等效的 $\sqrt{N}\Omega$
 
-![](./V%3D24.png)
-![](./six_figs.png)
+![](./images/V%3D24.png)
+![](./images/six_figs.png)
 
 6. EIT(Electronmagnetically induced Transparency)
 
