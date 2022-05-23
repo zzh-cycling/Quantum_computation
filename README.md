@@ -266,7 +266,7 @@ H=[\frac{\Omega}{2}(|r>_1<g|+|g>_1<r|)-\Delta |r>_1<r|]\otimes I_2\\+I_1 \otimes
 $$
 
 ![](images/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E7%AC%94%E8%AE%B0-11.jpg)
-com
+
 画图结果如下：第一张是第二张第六子图放大版，我们可以看到:
 $V=24$时，gg态能出现，rr态几乎不出现，rg,gr出现，呈psi态叠加态，使得单独原子的激发态能级升上去,并且周期缩短到原来的$\frac{1}{\sqrt{2}}$倍数，$\Omega_{|w>}$变成等效的 $\sqrt{N}\Omega$
 
