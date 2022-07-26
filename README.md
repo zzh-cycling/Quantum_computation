@@ -20,8 +20,7 @@ The so-called **actual experimental conditions**, explicitly, meaning:
 3. 高保真度。我们的演化出来的末态要与实际相差的足够小，通常需要低于1%的错误率，才能应用量子纠错surface code。通常要99.99%的保真度才能进行有效的量子计算。这也就是为啥量子拓扑很exciting。(当我们操纵系统的演化达到末态我们如何来测量保真度，by QPT,QST,GST, RB)。
 4. 控制变化应平缓。 起伏大意味着掺杂的高频分量多，易导致更高的激发，由二能级变为多能级。
 
-所以控制量子态的方法有哪些呢？这里以
-里德堡原子为例，主要是利用电磁调控。
+所以控制量子态的方法有哪些呢？这里以里德堡原子为例，主要是利用电磁调控。
 
 
 ## 脉冲控制
@@ -42,7 +41,7 @@ $$
 
 其中$\Delta(t)$ 是detuning的参数,  为Rabi频率，我们的控制过程优化即优化$\Delta(t)$。通过控制激光的pulse area。当激光的pulse area达到 pi 的时候关掉激光可以得到NOT gate。当pulse area= pi/2, 得到hadamard gate。这种方法在“快速”上达标，但是很难精准控制，在鲁棒性上不达标。
 
-The second model is usually used in Superconductor qubit model. The main difference between this model and the Rabi model is the assumption of a quantized in stead of a classical description of the field. This fully quantum-mechanical model describes the vacuum-field Rabi oscillations, which are presented in the article of Yoshie et al, found bby Edwin Jaynes and Fred Cummings in 1963. Its Hamiltionian is hited at books of Quantum Optics:
+The second model is usually used in Superconductor qubit model. The main difference between this model and the Rabi model is the assumption of a quantized instead of a classical description of the field. This fully quantum-mechanical model describes the vacuum-field Rabi oscillations, which are presented in the article of Yoshie et al, found by Edwin Jaynes and Fred Cummings in 1963. Its Hamiltionian is hited at books of Quantum Optics:
 
 $$ H=H_{field}+H_{atom}+H_{int} $$
 
@@ -65,9 +64,7 @@ $$ H=H_{field}+H_{atom}+H_{int} $$
 先考虑两能级系统动力学，其哈密顿量为:
 
 $$
-H=H_{free-atom}+H_{free-field}+H_{atom-classical-field-interaction}
-
-\\=-\frac{\omega_0}{2}\sigma_z+\frac{\omega_1}{2}\begin{pmatrix}
+H=H_{free-atom}+H_{free-field}+H_{atom-classical-field-interaction}\\=-\frac{\omega_0}{2}\sigma_z+\frac{\omega_1}{2}\begin{pmatrix}
 0 & e^{i\omega t} \\
 e^{i\omega t } & 0
 \end{pmatrix} 
