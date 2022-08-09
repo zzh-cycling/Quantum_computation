@@ -255,17 +255,42 @@ options={'func': None, 'maxiter': None, 'maxfev': None, 'disp': False, 'return_a
 
 
 5. Two-body physics
-两体问题的演化，即两个原子or多个比特随时间演化，特别的，两个里德堡态的原子，当两个原子都处于|r>时才会有相互作用。
+两体问题的演化，即两个原子or多个比特随时间演化，特别的，两个里德堡态的原子，当两个原子都处于|r>时才会有相互作用，即$n_in_j$项的来源。
 
 $$ 
 H=H_1\otimes I_2+I_1 \otimes H_2+H_{12} \\
 H=[\frac{\Omega}{2}(|r>_1<g|+|g>_1<r|)-\Delta |r>_1<r|]\otimes I_2\\+I_1 \otimes [\frac{\Omega}{2}(|r>_2<g|+|g>_2<r|)-\Delta |r>_2<r|]\\+V|r>_1<r| \otimes |r>_2<r|
 $$
+or could be written as a more general form:
+$$
+\frac{H}{\hbar}=\sum_i \frac{\Omega}{2}\sigma_x^i-\Delta n_i+\sum_{i,j}Vn_in_j
+$$
 
 ![](images/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E7%AC%94%E8%AE%B0-11.jpg)
 
+如果$\Delta=0$, 我们有：
+$$
+H=\begin{pmatrix}
+V & \frac{\Omega}{2} & \frac{\Omega}{2} &0
+\\ \frac{\Omega}{2} &0 &0 &\frac{\Omega}{2}
+\\\frac{\Omega}{2} &0 &0 &\frac{\Omega}{2}
+\\0 &\frac{\Omega}{2} & \frac{\Omega}{2} &0
+\end{pmatrix}
+$$
+利用$|+>=\frac{1}{\sqrt{2}}(|01>+|10>)$对称态 ,$|->=\frac{1}{\sqrt{2}}(|01>-|10>)$反对称态rewrite Hamiltionian, with {|00>, |+>, |11>, |->} as basis, we have:
+$$
+H=\begin{pmatrix}
+V& \frac{\Omega}{\sqrt2} &0 &0
+\\ \frac{\Omega}{\sqrt2} &0 &\frac{\Omega}{\sqrt2} &0
+\\ 0 &\frac{\Omega}{\sqrt2} &0 &0
+\\0 &0&0&0
+\end{pmatrix} 
+$$
+
 画图结果如下：第一张是第二张第六子图放大版，我们可以看到:
-$V=24$时，gg态能出现，rr态几乎不出现，rg,gr出现，呈psi态叠加态，使得单独原子的激发态能级升上去,并且周期缩短到原来的$\frac{1}{\sqrt{2}}$倍数，$\Omega_{|w>}$变成等效的 $\sqrt{N}\Omega$
+$V=24$时，gg态能出现，rr态几乎不出现，rg,gr出现，呈psi态叠加态，使得单独原子的激发态能级升上去, 这就是所谓的里德堡阻塞，并且周期缩短到原来的$\frac{1}{\sqrt{2}}$倍数，当我们有$N$个里德堡原子并且互相都在$R_b=(\Omega/V)^{1/6}$内，此时Rabi频率变为$\Omega_{|w>}$变成等效的 $\sqrt{N}\Omega$，可以看[6],[7]Saffman and Browaeys的工作。
+
+
 
 ![](images/V%3D24.png)
 ![](images/six_figs.png)
@@ -284,6 +309,10 @@ $V=24$时，gg态能出现，rr态几乎不出现，rg,gr出现，呈psi态叠�
 [4] Marlan O. Scully, Shi-Yao Zhu, and Athanasios Gavrielides. Degenerate quantum-beat laser: Lasing without inversion and inversion without lasing. Phys. Rev. Lett., 62(24):2813–2816, June 1989.
 
 [5] J. R. Kuklinski, U. Gaubatz, F. T. Hioe, and K. Bergmann. Adiabatic population transfer in a three-level system driven by delayed laser pulses. Phys. Rev. A, 40(11):6741–6744, December 1989.
+
+[6] Gaëtan, A., Miroshnychenko, Y., Wilk, T. et al. Observation of collective excitation of two individual atoms in the Rydberg blockade regime. Nature Phys 5, 115–118 (2009). https://doi.org/10.1038/nphys1183
+
+[7] Urban, E., Johnson, T., Henage, T. et al. Observation of Rydberg blockade between two atoms. Nature Phys 5, 110–114 (2009). https://doi.org/10.1038/nphys1178
 
 本文大量引用蔡老师的文章（（（，毕竟我从16年就开始关注“浅斟低唱”嘞。具体文献下述文章也都提到过。
 
