@@ -5,7 +5,7 @@ This is the notes and code for optimization of control of qubit in quantum compu
 
 Physical realizations of *quantum computer* includes photonics, NMR, cavity-QED, NV Center, joseph junction, ion trap, silicon quantum dot, Rydberg atom and the most exciting Quantum Topology.
 
-Meanwhile, three models for *quantum computation* are quantum circuit model, one way quantum computation model and adiabatic quantum computation model which we will discuss later. And the three is all equivalent.
+Meanwhile, three math models for *quantum computation* are quantum circuit model, one way quantum computation model(topological model) and adiabatic quantum computation model which we will discuss later. And the three is all equivalent.
 
 量子计算机领域的核心竞争力永远是算力的硬性指标：量子体积（QV）、最大可纠缠数目、单量子比特逻辑门与多量子逻辑门保真度、量子比特的相干时间（t1和t2）、量子逻辑门的操作时间。
 
