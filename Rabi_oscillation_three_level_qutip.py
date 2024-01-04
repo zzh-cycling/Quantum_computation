@@ -23,7 +23,7 @@ H=(Omiga_795*(e*g.dag()+g*e.dag())+Omiga_475*(e*r.dag()+r*e.dag()))/2
 state0 = e * e.dag() # 基态的Population
 state1 = g * g.dag() # 第一激发态的 Population
 state2 = r * r.dag() # 泄露能级的概率
-result=qp.mesolve(H, e, times, [], [state0, state1,state2])
+result=qp.sesolve(H, e, times, [], [state0, state1,state2])
 # 求解演化过程中每一刻的可观测变量值，记录在数组 result 中
 result0 =result.expect[0]
 result1 =result.expect[1]
@@ -38,5 +38,5 @@ plt.xlabel('Time')
 plt.ylabel('Population')
 plt.legend()
 
-plt.savefig('./three_level_qutip.png')
+# plt.savefig('./three_level_qutip.png')
 plt.show()

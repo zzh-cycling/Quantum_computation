@@ -10,8 +10,9 @@ rho_0=qt.Qobj([[1,0],
 a=qt.Qobj([[1,0],
            [0,0]])
 
-
+#Four Fourier components
 Nc=4
+
 
 wc_max=8
 

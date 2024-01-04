@@ -78,7 +78,8 @@ The Rabi model is a semi-classical model. This means that we use a classical rep
 
 $$
 E(t)=E_x(t)=E_0 cos(\omega t)
-\\H_{atom-classical\_field\_interaction}=\bm{\hat{d}}·\bm{E}(t)=-\hat{d}E_0cos(\omega t)
+\\H_{atom-classical\_field\_interaction}=\bm{\hat{d}}·\bm{E}(t)=-\hat{d}E_0cos(\omega t) \\
+H/\hbar=\omega_1 e^{i\omega t} \frac{\hat{d}}{d}
 $$
 
 Because we do not use a quantum field, there is no free-field Hamiltonian. The physical pictures of Rabi oscillation are like below(absorption of photon and emitted radiation):
@@ -87,7 +88,7 @@ Because we do not use a quantum field, there is no free-field Hamiltonian. The p
 
 ![](https://www.edwinvanderpol.com/vacuum_rabi_splitting/images/content/emission.gif) 
 
-或者用基矢来写就是($\hbar=1$)：
+用基矢来写就是($\hbar=1$)：
 
 $$
 \hat{H}=\frac{1}{2}\omega_0(|e><e|-|g><g|)\\-\frac{\omega_1}{2}(|e><g|+|g><e|)
@@ -118,7 +119,7 @@ $E_g=-\frac{1}{2}\sqrt{\Delta^2+\omega_1^2}, E_e=\frac{1}{2}\sqrt{\Delta^2+\omeg
 
 ![](images/two_level_rabi.png)
 
-现在我们来考虑三能级系统，相比二能级系统，三能级系统在与多模光场相互作用时，会展现出更多丰富的现象。例如 Hanle 效应 [1]、相干布居囚禁[2](CPT,coherent population 、电磁诱导透明 [3]、无反转激光 [4] 等等。这里介绍 $\Lambda$ 型三能级系统中下文‘Adiabatic evolution wtih qutip and without qutip just primary code.’所说的利用(STIRAP)进行绝热的布居迁移 [5]。
+现在我们来考虑三能级系统，相比二能级系统，三能级系统在与多模光场相互作用时，会展现出更多丰富的现象。例如 Hanle 效应 [1]、相干布居囚禁[2](CPT,coherent population 、电磁诱导透明 [3]、无反转激光 [4] 等等。这里介绍 $\Lambda$ 型三能级系统. 下文‘Adiabatic evolution wtih qutip and without qutip just primary code.’所说的利用(STIRAP)进行绝热的布居迁移 [5]。
 
 ab能级之间有偶极矩μ1，ac能级之间有偶极矩μ2，而bc能级之间的偶极跃迁是禁戒的。外加两束频率分别为ν1和ν2的驱动光场，满足
 
@@ -145,7 +146,7 @@ $$
 
 ![](images/STIRAP.png)
 
-2. Adiabatic evolution wtih qutip and without qutip just primary code. 可参见：[adiabatic_evolution_primarycode](./adiabatic_evolution_primarycode.py)(画出图一的代码),[adiabatic_evolution_withqutip](./adiabatic_evolution_withqutip.py)（画出图二的代码）
+1. Adiabatic evolution wtih qutip and without qutip just primary code. 可参见：[adiabatic_evolution_primarycode](./adiabatic_evolution_primarycode.py)(画出图一的代码),[adiabatic_evolution_withqutip](./adiabatic_evolution_withqutip.py)（画出图二的代码）
 
 This part especially focus on stimulation on three-level system interacting with two light fields, STIRAP(Stimulated Raman Adiabatical Path,受激拉曼绝热路径) explicitly.
 
@@ -167,10 +168,10 @@ $$
 
 ![](images/eigenenergy.png)
 
-看起来很像狄拉克锥吧，嗯？
+看起来很像时间域的狄拉克锥吧，嗯？
 其能级差最小值为：$\Delta E=2\epsilon$.
 
-然后我们再来考虑上文所说的三能级系统的布局迁移，从子图1我们可以看到，|g>态很好地转移到了|r>态上，基本没有在|e>态上稍作停留，当我们加入较强的耗散项后，便将很大部分的|g>态转移到了|e>态。
+然后我们再来考虑上文所说的三能级系统的布居迁移，从子图1我们可以看到，|g>态很好地转移到了|r>态上，基本没有在|e>态上稍作停留，当我们加入较强的耗散项后，便将很大部分的|g>态转移到了|e>态。
 
 ![](images/STIRAP%20Population%20Evolution%20with%20and%20without%20dissipation.png)
 
@@ -208,6 +209,9 @@ $$
 For a maximally mixed state，which means that its decomposition distribution of states is uniform probability distribution( $\rho =\lambda_i |\lambda_i><\lambda_i|, \lambda_i=\frac{1}{n}$), we have for a given dimension d of the system
 
 $$
+c_{\sigma_1,\cdots\sigma_L}=\sum_{a_1}^{r_1}U_{\sigma_1,a_1}S_{a_1,a_1}(V^{\dagger}){a_1,{\sigma_2,\cdots\sigma_L}}=\sum{a_1}^{r_1}U_{\sigma_1,a_1}c_{a_1,\sigma_2,\cdots\sigma_L}
+$$
+$$
 Trρ^2_{mix} =\frac{1}{d} > 0 . 
 $$
 
@@ -224,6 +228,17 @@ $$
 
 考虑噪声后，需要找到一个波形，在哪怕调整哈密顿量有随机噪声时，性能即保真度也不至于那么差，即鲁棒性，100个样品平均来说是最优的。
 
+我们想对一个演化的动力学过程进行优化的话，需要给定哈密顿量比如：
+$$
+H=\sigma_x+\Omega(t)\Delta \sigma_z
+$$
+若我们想演化10s，从$|0\rangle$出发演化到$|1\rangle$，优化的目标泛函为$\mathcal{F}=1-|\langle1|e^{iHt/\hbar} |0\rangle|^2$，这里$\Omega(t)$可以写成：
+
+$$
+\Omega(t)=1+\frac{\sum_{n=1}^{N_c}A_n sin(\omega_n t)+B_n cos(\omega_n t)}{normalized\quad constant}
+$$
+
+其中$\omega_n =\frac{2\pi}{T}(n+r_n)$，$r_n$是一个比较小的随机数这相当对$\mathcal{F}(A_n,B_n,\omega_n)$进行优化，为了简便我们可以固定住$\omega_n$。如果从参数空间出发可以看出初始大概的波形，可以先预设个波形 $\Omega(t)=f(t)\Omega_0(t)$.
 ```
 omiga_0=2
 N_c=4
@@ -241,9 +256,7 @@ for i in range(n_c):
 
 
 
-一般用到的优化算法有，CRAB such as Nelder-Mead
-BFGS  algorithm 
-GRAPE 梯度下降算法 类似deep learning 里的正向传播。下面是调用Nelder-Mead 在python里的包。
+一般用到的优化算法有，CRAB such as Nelder-Mead,BFGS  algorithm,GRAPE 梯度下降算法 类似deep learning 里的正向传播。下面是调用Nelder-Mead 在python里的包。
 ```
 import scipy.optimize as so
 
@@ -251,10 +264,12 @@ so.minimize(fun, x0, args=(), method='Nelder-Mead', \n
 bounds=None, tol=None, callback=None\n 
 options={'func': None, 'maxiter': None, 'maxfev': None, 'disp': False, 'return_all': False, 'initial_simplex': None, 'xatol': 0.0001, 'fatol': 0.0001, 'adaptive': False})
 ```
+$\mathcal{F}$是需优化的函数，coefficient是参数，即${A_n,B_n}$，方法选择"nelder-mead"，options中的xtol和ftol选择的是步长和精度，这个按感觉来就好。
+
 然后有些东西可以自己来写不调包，能够发现很多隐藏的东西，算出更多的东西，但是Nelder-mead很古老哩。所以没必要自己写。
 
-
-5. Two-body physics
+而dCRAB是建立在CRAB的基础之上的，前面说过CRAB的一个比较大的问题是，它一般只找到local minimum，而非global minimum，所以为了保证能找到全局最优解，我们引入dCRAB。dCRAB的思路其实很简单，就是进行多次CRAB运算，但是每次的$\omega_n$都取不同，多次优化后，一般来说就能找到global minimum；不仅如此dCRAB的收敛速度是比CRAB要快的，因为CRAB进行优化时，整体曲线呈现指数型优化，那使用dCRAB时可以每次只取CRAB的指数收敛部分就好，即接近收敛时开启第二轮优化。
+1. Two-body physics
 两体问题的演化，即两个原子or多个比特随时间演化，特别的，两个里德堡态的原子，当两个原子都处于|r>时才会有相互作用，即$n_in_j$项的来源。
 
 $$ 
